@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <None Remove="FluentMigrator.Extensions.Postgres" />
+    <None Remove="FluentMigrator.Runner.SQLite" />
+    <None Remove="FluentMigrator.Runner.Postgres" />
+    <None Remove="Npgsql" />
+    <None Remove="Swashbuckle.AspNetCore" />
+    <None Remove="Microsoft.Data.Sqlite" />
+    <None Remove="FluentMigrator.Runner" />
+    <None Remove="FluentMigrator" />
+    <None Remove="Dapper" />
+    <None Remove="Migrations\" />
+    <None Remove="Utilities\" />
+    <None Remove="System.IdentityModel.Tokens.Jwt" />
+    <None Remove="Microsoft.IdentityModel.Tokens" />
+    <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <None Remove="Entities\" />
+    <None Remove="Dtos\" />
+    <None Remove="Repositories\" />
+    <None Remove="RepositoryInterfaces\" />
+    <None Remove="Dtos\Users\" />
+    <None Remove="Mocks\" />
+    <None Remove="BCrypt.Net-Next" />
+    <None Remove="Dtos\Server\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentMigrator.Extensions.Postgres" Version="3.3.2" />
+    <PackageReference Include="FluentMigrator.Runner.SQLite" Version="3.3.2" />
+    <PackageReference Include="FluentMigrator.Runner.Postgres" Version="3.3.2" />
+    <PackageReference Include="Npgsql" Version="6.0.5" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.7" />
+    <PackageReference Include="FluentMigrator.Runner" Version="3.3.2" />
+    <PackageReference Include="FluentMigrator" Version="3.3.2" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.21.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.21.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.27" />
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Dtos\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="RepositoryInterfaces\" />
+    <Folder Include="Dtos\User\" />
+    <Folder Include="Mocks\" />
+    <Folder Include="Dtos\Server\" />
+  </ItemGroup>
+</Project>
