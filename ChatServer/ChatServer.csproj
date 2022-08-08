@@ -28,6 +28,10 @@
     <None Remove="Mocks\" />
     <None Remove="BCrypt.Net-Next" />
     <None Remove="Dtos\Server\" />
+    <None Remove="Dtos\Common\" />
+    <None Remove="Dtos\Auth\" />
+    <None Remove="exceptions\" />
+    <None Remove="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentMigrator.Extensions.Postgres" Version="3.3.2" />
@@ -54,5 +58,8 @@
     <Folder Include="Dtos\User\" />
     <Folder Include="Mocks\" />
     <Folder Include="Dtos\Server\" />
+    <Folder Include="Dtos\Common\" />
+    <Folder Include="Dtos\Auth\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
 </Project>
