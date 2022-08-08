@@ -5,7 +5,7 @@ using FluentMigrator.SqlServer;
 
 namespace ChatServer.Migrations
 {
-    [Migration(20220721094000)]
+    [Migration(1)]
     public class Migration_Users20220721 : Migration
     { 
 
@@ -20,7 +20,8 @@ namespace ChatServer.Migrations
                 .WithColumn("id").AsInt32().NotNullable().PrimaryKey().Identity(1, 1)
                 .WithColumn("username").AsString().NotNullable()
                 .WithColumn("email").AsString().NotNullable()
-                .WithColumn("password").AsString().NotNullable();
+                .WithColumn("password").AsString().NotNullable()
+                .WithColumn("last_active").AsDateTime().WithDefault(SystemMethods.CurrentDateTime);
         }
     }
 }

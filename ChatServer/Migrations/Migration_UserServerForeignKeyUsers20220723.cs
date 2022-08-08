@@ -3,7 +3,7 @@ using FluentMigrator;
 
 namespace ChatServer.Migrations
 {
-    [Migration(20220723150100)]
+    [Migration(4)]
     public class Migration_UserServerForeignKeyUsers20220723 : Migration
     {
         public override void Down()

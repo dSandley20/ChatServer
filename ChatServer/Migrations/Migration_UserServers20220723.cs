@@ -4,7 +4,7 @@ using FluentMigrator.SqlServer;
 
 namespace ChatServer.Migrations
 {
-    [Migration(20220723145200)]
+    [Migration(3)]
     public class Migration_UserServers20220723 : Migration
     {
         public override void Down()
