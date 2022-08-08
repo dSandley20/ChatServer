@@ -27,9 +27,9 @@ namespace ChatServer.Controllers
 
         //NOTE: only doing create and list for now
         [HttpGet]
-        public ServerResponseDto getServers()
+        public ServerResponseDto GetServers()
         {
-            var user = getUser();
+            var user = GetUser();
             return new ServerResponseDto()
             {
                 message = "Servers Found",
@@ -37,15 +37,25 @@ namespace ChatServer.Controllers
             };
         }
 
-        [HttpGet("{serverId}")]
-        public ClientServerDto joinServer(JoinServerDto data)
+        [HttpPost("join")]
+        public ClientServerDto JoinServer(JoinServerDto data)
         {
-            var user = getUser();
+            var user = GetUser();
 
             return repository.JoinServer(data, user.Id);
         }
 
-        public ClientUserDto getUser()
+        [HttpPut("connect/{serverId}")]
+        public ActionResult ConnectToServer(int serverId)
+        {
+            var user = GetUser();
+
+            // TODO check to make sure that user has server in his list
+            repository.ConnectToServer(serverId, user.Id);
+            return Ok();
+        }
+
+        public ClientUserDto GetUser()
         {
             if (HttpContext.User.Identity is ClaimsIdentity identity)
             {
