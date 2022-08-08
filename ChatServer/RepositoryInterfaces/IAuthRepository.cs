@@ -1,10 +1,10 @@
-﻿using System;
-using ChatServer.Dtos.Users;
+﻿using ChatServer.Dtos.User;
+using ChatServer.Dtos.Auth;
 namespace ChatServer.RepositoryInterfaces
 {
     public interface IAuthRepository
     {
-        public string CreateUser(CreateUserDto userDetails);
+        public AuthDto CreateUser(CreateUserDto userDetails);
         public void ForgotPassword(string email);
         public string ResetPassword(string pin, string password);
         public ClientUserDto Authenticate(UserLoginDto userDetails);
