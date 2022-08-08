@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 using ChatServer.Migrations;
 using ChatServer.Utilities;
 using FluentMigrator.Runner;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using ChatServer.Repositories;
 using ChatServer.RepositoryInterfaces;
+using ChatServer.Hubs;
 
 namespace ChatServer
 {
@@ -35,9 +29,6 @@ namespace ChatServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-           
-
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer(options =>
                     {
@@ -55,6 +46,7 @@ namespace ChatServer
 
             services.AddSingleton<IAuthRepository, AuthRepository>();
             services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<IServerRepository, ServerRepository>();
 
             services.AddMvc();
 
@@ -65,7 +57,7 @@ namespace ChatServer
                 options.AddDefaultPolicy(
                     policy =>
                     {
-                        policy.WithOrigins("http://localhost:3000", "https://localhost:3000/");
+                        policy.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
                     });
             });
 
@@ -76,6 +68,8 @@ namespace ChatServer
                 .AddPostgres()
                 .WithGlobalConnectionString(Configuration["DB:Connection"])
                 .ScanIn(Assembly.GetExecutingAssembly()).For.All());
+
+            services.AddSignalR();
         }
 
 
@@ -101,6 +95,8 @@ namespace ChatServer
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/chat");
+                //Add WS Hub
             });
 
             Database.EnsureDatabase(Configuration["DB:Connection"],
