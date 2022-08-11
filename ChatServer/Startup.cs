@@ -6,6 +6,7 @@ using ChatServer.Repositories;
 using ChatServer.RepositoryInterfaces;
 using ChatServer.Utilities;
 using FluentMigrator.Runner;
+using Hellang.Middleware.ProblemDetails;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -52,9 +53,7 @@ namespace ChatServer
             services.AddSingleton<IServerRepository, ServerRepository>();
 
             services.AddMvc();
-
             services.AddControllers();
-
             services
                 .AddCors(options =>
                 {
@@ -89,7 +88,6 @@ namespace ChatServer
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseExceptionHandler("/error");
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseCors();

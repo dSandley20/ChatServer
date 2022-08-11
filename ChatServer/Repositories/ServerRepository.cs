@@ -88,7 +88,7 @@ namespace ChatServer.Repositories
             }
             catch (Exception)
             {
-                throw new ServerNotFound("No Server Found");
+                throw new ServerNotFound("No Server Found");  
             }
         }
 
